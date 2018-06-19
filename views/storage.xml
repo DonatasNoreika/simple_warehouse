@@ -110,12 +110,6 @@
                                         <field name="warehouse_id"/>
                                         <field name="amount"/>
                                     </tree>
-                                    <form>
-                                        <group>
-                                            <field name="warehouse_id"/>
-                                            <field name="amount"/>
-                                        </group>
-                                    </form>
                                 </field>
                             </page>
                             <page string='Documents'>
@@ -164,7 +158,7 @@
         </record>
 
         <!--Item kanban view-->
-        <record id="item_kanban_view" model="ir.ui.view">
+        <record id="item_simple_warehouse_kanban_view" model="ir.ui.view">
             <field name="name">Item Kanban</field>
             <field name="model">simple_warehouse.item</field>
             <field name="arch" type="xml">
