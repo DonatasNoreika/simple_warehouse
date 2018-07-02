@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_item_manager,item Manager,model_simple_warehouse_item,simple_warehouse_manager,1,1,1,1
+access_item_images_manager,item_images Manager,model_simple_warehouse_item_images,simple_warehouse_manager,1,1,1,1
+access_item_documents_manager,item_documents Manager,model_simple_warehouse_item_documents,simple_warehouse_manager,1,1,1,1
+access_item_categories_manager,item_categories Manager,model_simple_warehouse_item_categories,simple_warehouse_manager,1,1,1,1
+access_quantity_manager,quantity Manager,model_simple_warehouse_quantity,simple_warehouse_manager,1,1,1,1
+access_inventory_manager,inventory Manager,model_simple_warehouse_inventory,simple_warehouse_manager,1,1,1,1
+access_warehouse_manager,warehouse Manager,model_simple_warehouse_warehouse,simple_warehouse_manager,1,1,1,1
+access_transfer_manager,transfer Manager,model_simple_warehouse_transfer,simple_warehouse_manager,1,1,1,1
+
+

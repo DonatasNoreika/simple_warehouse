@@ -73,7 +73,6 @@ class WTQuantity(models.Model):
     inventory_id = fields.Many2one(comodel_name='simple_warehouse.inventory', string=_('Inventory'), ondelete="cascade")
     warehouse_id = fields.Many2one(comodel_name='simple_warehouse.warehouse', string=_('Warehouse'),
                                    compute='set_warehouse_id', store=True)
-    # warehouse_id = fields.Many2one(comodel_name='simple_warehouse.warehouse', string=_('Warehouse'))
 
     @api.depends('item_id', 'amount')
     def set_name(self):
@@ -81,7 +80,7 @@ class WTQuantity(models.Model):
             if record.item_id and record.amount:
                 record.name = record.item_id.name + ' : ' + str(record.amount)
 
-    # @api.depends('inventory_id')
+    @api.depends('inventory_id')
     def set_warehouse_id(self):
         for record in self:
             if not record.warehouse_id:
