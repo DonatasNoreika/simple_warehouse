@@ -22,7 +22,6 @@ With simple_warehouse you can:
     'currency': 'EUR',
     'license': 'OPL-1',
     'support': 'programosjusuverslui@gmail.com',
-
     'author': "Žilvinas Vitkevičius, Donatas Noreika",
     'website': "http://programosverslui.wordpress.com",
 
