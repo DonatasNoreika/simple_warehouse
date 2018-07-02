@@ -21,6 +21,7 @@ With simple_warehouse you can:
     'price': 150.00,
     'currency': 'EUR',
     'license': 'OPL-1',
+
     'support': 'programosjusuverslui@gmail.com',
     'author': "Žilvinas Vitkevičius, Donatas Noreika",
     'website': "http://programosverslui.wordpress.com",
