@@ -1,0 +1,344 @@
+<odoo>
+    <data>
+        <!--Actions-->
+        <record model="ir.actions.act_window" id="simple_warehouse.warehouse_window_action">
+            <field name="name">Warehouse</field>
+            <field name="res_model">simple_warehouse.warehouse</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first warehouse
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="simple_warehouse.transfer_window_action">
+            <field name="name">Transfers</field>
+            <field name="res_model">simple_warehouse.transfer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first transfer
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="simple_warehouse.tool_window_action">
+            <field name="name">Tools</field>
+            <field name="res_model">simple_warehouse.item</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first item
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="simple_warehouse.tool_window_action">
+            <field name="name">Tools</field>
+            <field name="res_model">simple_warehouse.item</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first item
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="simple_warehouse.categories_window_action">
+            <field name="name">Categories</field>
+            <field name="res_model">simple_warehouse.item_categories</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first category
+                </p>
+            </field>
+        </record>
+
+        <!--Top menu items-->
+        <menuitem id="simple_warehouse.main_storage_menu" name="Storage"/>
+        <!--Left side menu items-->
+        <menuitem id="simple_warehouse.warehouse_side_menu" name="Warehouses" parent="simple_warehouse.main_storage_menu"/>
+        <menuitem id="simple_warehouse.tool_side_menu" name="Tools" parent="simple_warehouse.main_storage_menu" sequence="0"/>
+        <!--Left side menu actions-->
+        <menuitem id="simple_warehouse.warehouse_menu" name="Warehouses"
+                  parent="simple_warehouse.warehouse_side_menu"
+                  action="simple_warehouse.warehouse_window_action"/>
+        <menuitem id="simple_warehouse.transfer_menu" name="Transfers"
+                  parent="simple_warehouse.warehouse_side_menu"
+                  action="simple_warehouse.transfer_window_action"/>
+        <menuitem id="simple_warehouse.tool_menu" name="Tools"
+                  parent="simple_warehouse.tool_side_menu"
+                  action="simple_warehouse.tool_window_action"/>
+        <menuitem id="simple_warehouse.Categories_menu" name="Categories"
+                  parent="simple_warehouse.tool_side_menu"
+                  action="simple_warehouse.categories_window_action"/>
+
+        <!--Views-->
+        <!--Item form view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_item_form">
+            <field name="name">Item</field>
+            <field name="model">simple_warehouse.item</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image_medium" widget="image"/>
+                        <!--<field name="image_medium" widget="image" class="oe_avatar"/>-->
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Item Name"/>
+                            <h1>
+                                <field name="name" placeholder="Item Name"/>
+                            </h1>
+                            <div name="properties">
+                                <label class="oe_edit_only" for="serial_no" string="Serial Number"/>
+                                <field name="serial_no"/>
+                                <div>
+                                    <label for="category_id" string="Category"/>
+                                    <field name="category_id"/>
+                                </div>
+                                <div>
+                                    <label class="oe_edit_only" for="notes" string="Notes"/>
+                                    <field name="notes"/>
+                                </div>
+                                <!--<div>-->
+                                    <!--<field name="expendable"/>-->
+                                    <!--<label for="expendable"/>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+
+                        <notebook>
+                            <page string="Stored quantities">
+                                <field name="quantity_ids" readonly="1">
+                                    <tree>
+                                        <field name="warehouse_id"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string='Documents'>
+                                <field name="document_ids">
+                                    <tree quick_create="true" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="document_name" invisible="1"/>
+                                        <field name="document" filename="document_name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="More photos">
+                                <field name="photos_ids">
+                                    <tree>
+                                        <field name="image" widget="image" height="100"/>
+                                        <field name="image" filename="name"/>
+                                        <field name="comment"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="name" invisible="1"/>
+                                                <field name="image" widget="image" filename="name"/>
+                                                <field name="comment"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Item tree view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_item_tree">
+            <field name="name">Item</field>
+            <field name="model">simple_warehouse.item</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="serial_no"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Item kanban view-->
+        <record id="item_kanban_view" model="ir.ui.view">
+            <field name="name">Item Kanban</field>
+            <field name="model">simple_warehouse.item</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="image_small"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('simple_warehouse.item', 'image_small', record.id.value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <ul>
+                                        <li>Serial number:
+                                            <field name="serial_no"></field>
+                                        </li>
+                                        <li>Quantity:
+                                            <field name="items_quants"></field>
+                                        </li>
+
+                                        <!--TODO: Add total stored quantity?-->
+                                        <!--<li>Quantity: <field name="total_quantity"></field></li>-->
+                                    </ul>
+                                    <div name="tags"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!--Quantity form view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_quantity_form">
+            <field name="name">Quantity</field>
+            <field name="model">simple_warehouse.quantity</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="item_id"/>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Quantity tree view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_quantity_tree">
+            <field name="name">Quantity</field>
+            <field name="model">simple_warehouse.quantity</field>
+            <field name="arch" type="xml">
+                <tree quick_create="true" editable="bottom">
+                    <field name="item_id"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Inventory form view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_inventory_form">
+            <field name="name">Inventory</field>
+            <field name="model">simple_warehouse.inventory</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="quantity_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Warehouse form view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_warehouse_form">
+            <field name="name">Warehouse</field>
+            <field name="model">simple_warehouse.warehouse</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Inventory">
+                                <field name="quantity_ids"/>
+                            </page>
+                            <page string="Reservations">
+                                <field name="reservation_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Warehouse tree view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_warehouse_tree">
+            <field name="name">Warehouse</field>
+            <field name="model">simple_warehouse.warehouse</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Transfer form view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_transfer_form">
+            <field name="name">Transfer</field>
+            <field name="model">simple_warehouse.transfer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="check" type="workflow"
+                                string="Check availability"
+                                states="waiting"/>
+                        <button name="reserve" type="workflow"
+                                string="Reserve"
+                                confirm="Reserve items?"
+                                states="available"/>
+                        <button name="transfer" type="workflow"
+                                string="Transfer"
+                                states="reserved"/>
+
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="source_location_id"/>
+                            <field name="target_location_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Items">
+                                <field name="quantity_ids"/>
+                                <!--attrs="{'readonly': [('state', '!=', 'waiting')]}"/>-->
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Transfer tree view-->
+        <record model="ir.ui.view" id="view_simple_warehouse_transfer_tree">
+            <field name="name">Transfer</field>
+            <field name="model">simple_warehouse.transfer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="source_location_id"/>
+                    <field name="target_location_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_simple_warehouse_categories_form">
+            <field name="name">Categories</field>
+            <field name="model">simple_warehouse.item_categories</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="items_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="items_quants"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
