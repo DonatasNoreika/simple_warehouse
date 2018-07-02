@@ -7,7 +7,7 @@
 
     'description': """
     
-This module is simple solution for Inventory organization in several Warehouses. Simple Warehouse does not interfere with main Odoo Inventory funcionality.  
+This module is simple solution for Inventory organization in several Warehouses. Simple Warehouse does not interfere with main Odoo Inventory functionality.  
 With simple_warehouse you can:
 
 1. Add Tools with Serial Numbers, Category, Notes and attach Photos and related Documents.
@@ -21,6 +21,7 @@ With simple_warehouse you can:
     'price': 150.00,
     'currency': 'EUR',
     'license': 'OPL-1',
+    'support': 'programosjusuverslui@gmail.com',
 
     'author': "Žilvinas Vitkevičius, Donatas Noreika",
     'website': "http://programosverslui.wordpress.com",
