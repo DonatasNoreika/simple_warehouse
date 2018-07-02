@@ -25,6 +25,7 @@ With simple_warehouse you can:
     'support': 'programosjusuverslui@gmail.com',
     'author': "Žilvinas Vitkevičius, Donatas Noreika",
     'website': "http://programosverslui.wordpress.com",
+    'images': ['static/images/main_screenshot.png'],
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
