@@ -3,18 +3,18 @@
     'name': "simple_warehouse",
     'version': '1.00',
     'summary': """
-        Simple Warehouse""",
+        Simple warehouse""",
 
     'description': """
     
-This module is simple solution for Inventory organization in several Warehouses. Simple Warehouse does not interfere with main Odoo Inventory functionality.  
-With simple_warehouse you can:
+This module is a simple solution for the inventory organization in a several warehouses. Simple warehouse does not interfere with a main Odoo inventory functionality.  
+With this module you can:
 
-1. Add Tools with Serial Numbers, Category, Notes and attach Photos and related Documents.
-2. Add Categories for Tools and print all Tools in selected Category.
-3. Add Warehouses and print all Tools in selected Warehouse.
-4. Transfer selected Quantity of Tools from one Warehouse to another.
-5. Reserve selected Quantity of Tools in Warehouse.
+1. Add tools with a serial numbers, categories, notes and attach the photos and related documents.
+2. Add categories for a tools and print all the tools from the selected category.
+3. Add warehouses and print all the tools from the selected warehouse.
+4. Transfer selected quantity of the tools from one warehouse to another.
+5. Reserve selected quantity of the tools in a warehouse.
           
     """,
 
