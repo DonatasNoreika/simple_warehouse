@@ -1,7 +1,0 @@
-<odoo>
-    <data>
-        <record id="simple_warehouse_manager" model="res.groups">
-            <field name="name">Turbine Project Manager</field>
-        </record>
-    </data>
-</odoo>
