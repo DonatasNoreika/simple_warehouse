@@ -3,7 +3,7 @@
     'name': "simple_warehouse",
     'version': '1.00',
     'summary': """
-        Simple warehouse""",
+        This is a simple solution for the inventory organization in a several warehouses""",
 
     'description': """
     
