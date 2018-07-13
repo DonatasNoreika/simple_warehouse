@@ -15,6 +15,7 @@ With this module you can:
 3. Add warehouses and print all the tools from the selected warehouse.
 4. Transfer selected quantity of the tools from one warehouse to another.
 5. Reserve selected quantity of the tools in a warehouse.
+6. Print list of tools from selected category or warehouse.
           
     """,
 
