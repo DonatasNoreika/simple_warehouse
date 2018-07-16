@@ -19,7 +19,7 @@ With this module you can:
           
     """,
 
-    'price': 80.00,
+    'price': 30.00,
     'currency': 'EUR',
     'license': 'OPL-1',
 
