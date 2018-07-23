@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "simple_warehouse",
+    'name': "Simple Warehouse",
     'version': '1.00',
     'summary': """
         This is a simple solution for the inventory organization in a several warehouses""",
